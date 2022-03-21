@@ -44,7 +44,8 @@ func main() {
 	_, err = sc.QueueSubscribe("testi", "group", func(m *stan.Msg) {
 		err = json.Unmarshal(m.Data, &orderStruct)
 		if err != nil {
-			log.Fatal("Error occurred while unmarshalling into json struct:", err)
+			log.Println("Error occurred while unmarshalling into json struct:", err)
+			return
 		}
 
 		err = Validate(orderStruct)
