@@ -38,10 +38,9 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	orderStruct := new(OrderInfo)
-
+	
 	_, err = sc.QueueSubscribe("testi", "group", func(m *stan.Msg) {
+		orderStruct := new(OrderInfo)
 		err = json.Unmarshal(m.Data, &orderStruct)
 		if err != nil {
 			log.Println("Error occurred while unmarshalling into json struct:", err)
