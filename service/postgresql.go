@@ -13,9 +13,10 @@ func getCache(db *sql.DB, c *cache.Cache) {
 		fmt.Println(err)
 	}
 	defer rows.Close()
-	cacheStruct := new(CacheStruct)
+	
 
 	for rows.Next() {
+		cacheStruct := new(CacheStruct)
 		if err = rows.Scan(&cacheStruct.uid, &cacheStruct.OrderInfo); err != nil {
 			log.Println("Error occurred while scanning rows:", err)
 		}
