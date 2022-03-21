@@ -14,8 +14,10 @@ import (
 	"time"
 )
 
-func main() {
+var Cache *cache.Cache
 
+func main() {
+	var connectionString = fmt.Sprintf("host=%s user=%s password=%s dbname=%s sslmode=disable", host, user, password, dbname)
 	Cache = cache.New(5*time.Minute, 10*time.Minute)
 
 	db, err := sql.Open("postgres", connectionString)
