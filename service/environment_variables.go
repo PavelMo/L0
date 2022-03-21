@@ -16,8 +16,4 @@ const (
 
 var connectionString = fmt.Sprintf("host=%s user=%s password=%s dbname=%s sslmode=disable", host, user, password, dbname)
 var Cache *cache.Cache
-var router = chi.NewRouter()
-var s = &http.Server{
-	Addr:    ":8080",
-	Handler: router,
-}
+
