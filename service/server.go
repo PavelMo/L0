@@ -14,6 +14,11 @@ import (
 )
 
 func RunServer() {
+	var router = chi.NewRouter()
+	var s = &http.Server{
+	Addr:    ":8080",
+	Handler: router,
+	}
 
 	router.Use(middleware.Logger)
 	router.Use(middleware.Recoverer)
