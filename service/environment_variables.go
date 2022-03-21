@@ -1,12 +1,5 @@
 package main
 
-import (
-	"fmt"
-	"github.com/go-chi/chi/v5"
-	"github.com/patrickmn/go-cache"
-	"net/http"
-)
-
 const (
 	host     = "localhost"
 	user     = "postgres"
@@ -14,6 +7,5 @@ const (
 	dbname   = "L0"
 )
 
-var connectionString = fmt.Sprintf("host=%s user=%s password=%s dbname=%s sslmode=disable", host, user, password, dbname)
-var Cache *cache.Cache
+
 
