@@ -53,15 +53,15 @@ func GetRandJson() *OrderInfo {
 	s.Delivery.Phone = "+79" + getRandDigit(9)
 	s.Delivery.Zip = getRandId(7)
 	s.Delivery.City, s.Delivery.Region = getRandCity()
-	s.Delivery.Address = RandAddress[rand.Intn(len(RandAddress)-1)]
-	s.Delivery.Email = getRandId(5) + RandMail[rand.Intn(len(RandMail)-1)]
+	s.Delivery.Address = RandAddress[rand.Intn(len(RandAddress))]
+	s.Delivery.Email = getRandId(5) + RandMail[rand.Intn(len(RandMail))]
 
 	s.Payment.Transaction = UID
 	s.Payment.RequestID = getRandDigit(3)
-	s.Payment.Currency = RandCurrency[rand.Intn(len(RandCurrency)-1)]
+	s.Payment.Currency = RandCurrency[rand.Intn(len(RandCurrency))]
 	s.Payment.Provider = "wbpay"
 	s.Payment.PaymentDt = rand.Intn(9999999999-1000000000+1) + 1000000000
-	s.Payment.Bank = RandBank[rand.Intn(len(RandBank)-1)]
+	s.Payment.Bank = RandBank[rand.Intn(len(RandBank))]
 	s.Payment.DeliveryCost = rand.Intn(2000)
 	s.Payment.GoodsTotal = 1
 	s.Payment.CustomFee = rand.Intn(20)
@@ -71,11 +71,11 @@ func GetRandJson() *OrderInfo {
 		TrackNumber: s.TrackNumber,
 		Price:       rand.Intn(999999-100+1) + 100,
 		Rid:         getRandId(17),
-		Name:        ProductName[rand.Intn(len(ProductName)-1)],
+		Name:        ProductName[rand.Intn(len(ProductName))],
 		Sale:        rand.Intn(90),
 		Size:        getRandId(2),
 		NmID:        rand.Intn(999999-100000+1) + 100000,
-		Brand:       ProductBrand[rand.Intn(len(ProductBrand)-1)],
+		Brand:       ProductBrand[rand.Intn(len(ProductBrand))],
 		Status:      202,
 	}
 	item.TotalPrice = int(float64(item.Price) * (1 - float64(item.Sale)/100))
@@ -95,19 +95,19 @@ func GetRandJson() *OrderInfo {
 func getRandDigit(n int) string {
 	id := make([]rune, n)
 	for i := 0; i < n; i++ {
-		id[i] = RandDigits[rand.Intn(len(RandDigits)-1)]
+		id[i] = RandDigits[rand.Intn(len(RandDigits))]
 	}
 	return string(id)
 }
 func getRandId(n int) string {
 	orderUID := make([]rune, n)
 	for i := 0; i < n; i++ {
-		orderUID[i] = RunesRand[rand.Intn(len(RunesRand)-1)]
+		orderUID[i] = RunesRand[rand.Intn(len(RunesRand))]
 	}
 	return string(orderUID)
 }
 func getRandCity() (string, string) {
-	randD := rand.Intn(len(RandCity) - 1)
+	randD := rand.Intn(len(RandCity))
 	j := 0
 	for i, val := range RandCity {
 		if j == randD {
