@@ -57,7 +57,7 @@ func GetOrderInfo(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			fmt.Println(err)
 		}
-		tmpl, err := template.ParseFiles("html_template/order_info.html")
+		tmpl, err := template.ParseFiles("web\static/order_info.html")
 		if err != nil {
 			fmt.Println(err)
 		}
